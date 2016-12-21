@@ -11,11 +11,11 @@
 %% Model definitions
 
 %We will initialise a couple of parameters
-LambdaA = 0.4; % nondimensional natural rate of cell death
-LambdaN = 0.6; % Nondimensional necrosis rate
-SigmaH = 0.4; % nondimensional limit at which cells become quiescent. Has to be within [0, 1]
-SigmaN = 0.2; % nondimesnional limit at which cells besome nectrotic
-Gamma = 0.5; % nondimensional nutrient consumption rate
+LambdaA = 0.1; % nondimensional natural rate of cell death
+LambdaN = 0.2; % Nondimensional necrosis rate
+SigmaH = 0.9; % nondimensional limit at which cells become quiescent. Has to be within [0, 1]
+SigmaN = 0.8; % nondimesnional limit at which cells besome nectrotic
+Gamma = 0.3; % nondimensional nutrient consumption rate
 
 %% Stage One
 
@@ -42,7 +42,7 @@ end
 % an outer rim of proliferating cells
 
 %Maximum Time
-T = 20;
+T = 10;
 
 %Initialise timestep
 DeltaT = 0.1;

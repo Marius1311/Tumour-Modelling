@@ -17,13 +17,13 @@ if (5*LambdaA > (2*SigmaH + 3)) % stable steady state attainable
     [tS1, RS1] = ode45(R1, tspan1, R0);
     State = 1;
     
-    FigHandle = figure('Position', [140, 140, 1000, 500]);
-    subplot(1, 2, 1), plot(tS1, RS1), title({'Stage One Tumour Growth R(t)', 'Steady State attained'}), xlabel('t'), ylabel('R'), grid;
+    FigHandle = figure('Position', [140, 140, 600, 300]);
+    subplot(1, 2, 1), plot(tS1, RS1), title({'Stage I Tumour Growth R(t)', 'Steady State attained'}), xlabel('t'), ylabel('R'), grid;
     
     % This finds R(t), but we also would like to see the nutrient distribution when the final value for R is attained.
     % Plot nutrient distribution
     r = linspace(0, RS1(end));
-    subplot(1, 2, 2), plot(r, Sigma1(r, RS1(end), Gamma)),grid,  title({'Stage One Tumour Growth', 'Final Nutrient Distribution'}), xlabel('r'), ylabel('\sigma(r, t) ');
+    subplot(1, 2, 2), plot(r, Sigma1(r, RS1(end), Gamma)),grid,  title({'Stage I Tumour Growth', 'Final Nut. Dist.'}), xlabel('r'), ylabel('\sigma(r, t) ');
  
 elseif (5*LambdaA < (2*SigmaH + 3)) % steady state unattainable, model breakdown
     StopR1 = @(t, R) R1EventsFcn(t, R, Gamma, SigmaH); % Parametrise events function
