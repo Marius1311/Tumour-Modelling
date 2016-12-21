@@ -29,7 +29,7 @@ t0 = tS2(end);
 ROld = R0;
 
 %Numbber of timepoints
-N = ceil((T - t0)/DeltaT);
+N = floor((T - t0)/DeltaT);
 
 % Create Array to store points
 RS3 = zeros(N, 1);
@@ -66,16 +66,22 @@ ROld = RNew;
 n = n+1;
 end
 
-FigHandle = figure('Position', [140, 140, 1000, 500]);
+FigHandle = figure('Position', [140, 140, 600, 300]);
 
 %Plot R(t)
-subplot(1, 2, 1), plot([tS1; tS2; tS3], [RS1; RS2; RS3], 'b-', tS1(end), RS1(end), 'rx', tS2(end), RS2(end), 'rx' ), title({'Stage One, Two and Three Tumour Growth R(t)', 'Steady state attained'}), xlabel('t'), ylabel('R'), grid;
+subplot(1, 2, 1), plot([tS1; tS2; tS3], [RS1; RS2; RS3], 'b-', tS1(end), RS1(end), 'rx', tS2(end), RS2(end), 'rx' ), title({'Stage I, II & III Tumour Growth R(t)', 'Steady state attained'}), xlabel('t'), ylabel('R'), grid;
 
 % Plot Nutrient distribution
 r = linspace(0, RS3(end));
 subplot(1, 2, 2), plot(r, Sigma3(SigmaN, RS3(end), R_N, Gamma, r),'b-', R_N, SigmaN, 'rx', R_H, SigmaH, 'rx'),  ...
-    title({'Stage One, Two and Three Tumour Growth', 'Final Nutrient Distribution'}), xlabel('r'),...
+    title({'Stage I, II & III Tumour Growth', 'Final Nut. Dist.'}), xlabel('r'),...
     ylabel('\sigma(r, t) '), grid;
+
+FigHandle = figure('Position', [140, 140, 400, 300]);
+plot(tS3, RHy, 'b-', tS3, RNec, 'r-'), title('Internal Boundaries in Stage III'), xlabel('t'), ylabel('Boundaries'), grid;
+h = legend({'R_H(t)', 'R_N(t)'});
+rect = [0.60, 0.20, .25, .25];
+set(h, 'Position', rect);
 
 end
 
