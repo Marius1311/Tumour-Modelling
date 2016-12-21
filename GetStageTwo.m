@@ -14,7 +14,7 @@ Sigma2 = @(r, R, Gamma) 1 - Gamma/6*(R^2 - r.^2);
 R0 = RS1(end);
 
 %Timespan
-tspan2 = [tS1(end), 50];
+tspan2 = [tS1(end), 15];
 % Most of the growth will happen in this timespan
 
 %This time it is harder to predict whether a steady state will be attained
@@ -25,16 +25,16 @@ tspan2 = [tS1(end), 50];
  
  if tS2(end) == tspan2(end)
      
-     FigHandle = figure('Position', [140, 140, 1000, 500]);
+     FigHandle = figure('Position', [140, 140, 600, 300]);
      
      %Plot R(t)
      State = 1;
-     subplot(1, 2, 1), plot([tS1; tS2], [RS1; RS2],'b-', tS1(end), RS1(end), 'rx'), title({'Stage One and Two Tumour Growth R(t)', 'Steady State attained'}), xlabel('t'), ylabel('R'), grid;
+     subplot(1, 2, 1), plot([tS1; tS2], [RS1; RS2],'b-', tS1(end), RS1(end), 'rx'), title({'Stage I & II Tumour Growth R(t)', 'Steady State attained'}), xlabel('t'), ylabel('R'), grid;
      
      %Plot nutrient distribution
      r = linspace(0, RS2(end));
      subplot(1, 2, 2), plot(r, Sigma2(r, RS2(end), Gamma), 'b-', R_H(RS2(end), Gamma, SigmaH), SigmaH, 'rx'), ...
-         title({'Stage One and Two Tumour Growth',' Final Nutrient Distribution'}), xlabel('r'),...
+         title({'Stage I & II Tumour Growth',' Final Nut. Dist.'}), xlabel('r'),...
          ylabel('\sigma(r, t) '), grid;
      
  else
